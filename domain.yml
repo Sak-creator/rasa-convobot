@@ -1,0 +1,72 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - provide_table
+  - provide_experience
+  - provide__name
+  - provide_location
+
+entities:
+  - table
+  - location
+  - experience
+  - namee
+
+slots:
+  table:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: table
+  location:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: location
+  experience:
+    type: float
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: experience
+  namee:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: namee
+
+actions:
+  - action_collect_information
+
+responses:
+  utter_greet:
+    - text: "Hey! How are you?"
+
+  utter_goodbye:
+    - text: "Bye"
+
+  #utter_display_results:
+   # - text: "{query}"
+
+ # utter_provide_name:
+    #- text: "provide name:"
+
+ # utter_provide_location:
+    #- text: "provide location:"
+
+ # utter_provide_experience:
+   # - text: "provide years of experience:"
+
+ # utter_provide_table:
+    #- text: "Hi! what can i do for you today:"
+  
+  
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

@@ -1,0 +1,48 @@
+
+#- story: ask for name of table
+  #steps:
+ # - intent: greet
+  #- action: utter_greet
+  # intent: provide_table
+ # - action: utter_provide_table
+version: "3.1"
+
+stories:
+  - story: greet and goodbye
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: greet with information intake
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: provide_table
+      - action: action_collect_information
+      - intent: provide_name
+     # - action: utter_provide_name
+      - action: action_collect_information
+      - intent: provide_location
+     # - action: utter_provide_location
+      - action: action_collect_information
+      - intent: provide_experience
+      #- action: utter_provide_experience
+      - action: action_collect_information
+
+  - story: story path 3
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: provide_name
+      #- action: utter_provide_name
+      - action: action_collect_information
+      - intent: provide_location
+     # - action: utter_provide_location
+      - action: action_collect_information
+      - intent: provide_experience
+      #- action: utter_provide_experience
+      - action: action_collect_information
+
+  

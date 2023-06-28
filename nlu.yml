@@ -1,0 +1,124 @@
+
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: provide_table
+  examples: |
+    -  table name is [employees](table)
+    -  table name is [vendors](table)
+    -  table name is [clients](table)
+    -  table name is [customers](table)
+    -  table name is [patients](table)
+    - add new record 
+    - add record
+    -  [vendors](table)
+    -  [clients](table)
+    -  [customers](table)
+    -  [patients](table)
+    -  [employees](table)
+    - table is [employees](table)
+    - table is [clients](table)
+    - table is [customers](table)
+    - table is [patients](table)
+    - table is [vendors](table)
+    - name is [employees](table)
+    - name is [clients](table)
+    - name is [vendors](table)
+    - name is [customers](table)
+    - name is [patients](table)
+    - I want to create a new [vendor](table)
+    - I want to create a new [clients](table)
+    - I want to create a new [customers](table)
+    - I want to create a new [employees](table)
+    - I want to create a new [patients](table)
+    - I want to insert new [vendor](table) to master data
+    - I want to insert new [clients](table) to master data
+    - I want to insert new [patients](table) to master data
+    - I want to insert new [employees](table) to master data
+    - I want to insert new [customers](table) to master data
+    - I want to create new [vendor](table) profile
+    - I want to create new [customers](table) profile
+    - I want to create new [clients](table) profile
+    - I want to create new [employees](table) profile
+    - I want to create new [patients](table) profile
+    - I want to insert new [vendors](table) to the database
+    - I want to insert new [clients](table) to the database
+    - I want to insert new [employees](table) to the database
+
+    
+
+- intent: provide_name
+  examples: |
+    - [Sakshi](namee)
+    - [priya](namee)
+    - [Abhay](namee)
+    - [John](namee)
+    - [Sophie](namee)
+    - [Ranveer](namee)
+    - [naman](namee)
+    - [Raj](namee)
+    - [Nakul](namee)
+    - [Shreya](namee)
+    - [Aryaman](namee)
+   
+- intent: provide_location
+  examples: |
+    - [Paris](location)
+    - [London](location)
+    - [Jaipur](location)
+    - [Chennai](location)
+    - [Delhi](location)
+    - [Odisha](location)
+    - [New York](location)
+    - [Indore](location)
+    - [Kerela](location)
+    
+- intent: provide_experience
+  examples: |
+    - [4](experience)years
+    - [12](experience)years
+    - [5](experience)years
+    - [10](experience)years
+    - [8](experience)years
+    - [29](experience)years
+    - [14](experience)
+    - [17](experience)
+    - [1](experience)
+    - [60](experience)
+    - [15](experience)
+    - [35](experience)
+
+        
+
+
+
+    
