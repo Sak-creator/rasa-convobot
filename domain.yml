@@ -5,14 +5,34 @@ intents:
   - goodbye
   - provide_table
   - provide_experience
-  - provide__name
+  - provide_name
   - provide_location
+  - display_results
+  - provide_table_new
+  - provide_table_where
+  - display_where
+  - provide_table_name
+  - provide_rowname
+  - display_update
+  - provide_locationname
 
 entities:
   - table
   - location
   - experience
   - namee
+  - tablenamenew
+  - value
+  - column
+  - operator
+  - title
+  - rowname
+  - updatecolumn1
+  - updatevalue1
+  - update
+  - wherecolumn1
+  - wherevalue1
+ 
 
 slots:
   table:
@@ -21,12 +41,14 @@ slots:
     mappings:
       - type: from_entity
         entity: table
+        
   location:
     type: text
     influence_conversation: true
     mappings:
       - type: from_entity
         entity: location
+
   experience:
     type: float
     influence_conversation: true
@@ -40,33 +62,118 @@ slots:
       - type: from_entity
         entity: namee
 
+  tablenamenew:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: tablenamenew
+  value:
+    type: float
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: value
+  column:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: column
+  operator:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: operator
+
+  title:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: title
+
+  rowname:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: rowname
+
+  update_name:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: update_name
+
+  updatecolumn1:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: updatecolumn1
+
+  updatevalue1:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: updatevalue1
+
+  update:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: update
+
+  wherecolumn1:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: wherecolumn1
+
+  wherevalue1:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: wherevalue1
+
+  
+    
+  
+
 actions:
   - action_collect_information
-
+  - generate_sql_query_action
+  - generate_where_query_action
+  - generate_update_query_action
 responses:
   utter_greet:
-    - text: "Hey! How are you?"
+    - text: "Hey! What can i do for you today?"
 
   utter_goodbye:
     - text: "Bye"
 
-  #utter_display_results:
-   # - text: "{query}"
+  utter_display_results:
+    - text: "{query}"
 
- # utter_provide_name:
-    #- text: "provide name:"
+  utter_display_where:
+    - text: "{where}"
 
- # utter_provide_location:
-    #- text: "provide location:"
+  utter_display_word:
+    - text: "{word}"
 
- # utter_provide_experience:
-   # - text: "provide years of experience:"
+  utter_display_update:
+    - text: "{querynew}"
 
- # utter_provide_table:
-    #- text: "Hi! what can i do for you today:"
-  
-  
+ 
 
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+ 
