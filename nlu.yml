@@ -31,30 +31,51 @@ nlu:
     - bye bye
     - see you later
 
+- intent: provide_table_new
+  examples: |
+    - display list of  [vendors](tablenamenew)
+    - get me list of [vendors](tablenamenew)
+    - give list of [vendors](tablenamenew)
+    - show me list of [vendors](tablenamenew)
+    - list all [vendors](tablenamenew)
+    - bring the list of [vendors](tablenamenew)
+
+- intent: provide_table_where
+  examples: |
+    - show [vendors](tablenamenew) whose [experience](column) is [greater]{"entity": "operator", "value": ">"} than [18](value) years
+    - give [vendors](tablenamenew) whose [age](column) is [less]{"entity": "operator", "value": "<"}than [30](value)
+    - list [vendors](tablenamenew) whose [age](column) is [lesser]{"entity": "operator", "value": "<"} than [20](value) 
+    - show [vendors](tablenamenew) whose [experience](column) is [less]{"entity": "operator", "value": "<"} than [10](value) years
+    - get me [vendors](tablenamenew) whose [age](column) is [greater]{"entity": "operator", "value": ">"} than [50](value)
+    - display [vendors](tablenamenew) with [age](column) [less]{"entity": "operator", "value": "<"} than [30](value)
+    - show me the [vendors](tablenamenew) where [age](column) is [less]{"entity": "operator", "value": "<"} than [30](value)
+    - list [vendors](tablenamenew) whose [age](column) is [below]{"entity": "operator", "value": "<"} [30](value)
+    - list [vendors](tablenamenew) whose [age](column) is [above]{"entity": "operator", "value": ">"} [30](value)
+    - list [vendors](tablenamenew) whose [age](column) is [more than]{"entity": "operator", "value": ">"} [30](value)
+    - list [vendors](tablenamnew) whose [age](column) is [more]{"entity": "operator", "value": ">"} [30](value)
+    - list [vendors](tablenamenew) whose [age](column) is [less than]{"entity": "operator", "value": ">"} [30](value)
+    - list [vendors](tablenamenew) whose [age](column) is [lesser than]{"entity": "operator", "value": ">"} [30](value)
+   
+- intent: provide_table_name
+  examples: |
+    - list [vendors](tablenamenew) whose [name](column) [contains]{"entity": "operator", "value": "like"} [abcd](title)
+    - list [vendors](tablenamenew) whose [name](column) [has]{"entity": "operator", "value": "like"} [A](title)
+    - list [vendors](tablenamenew) whose [name](column) is [equals]{"entity": "operator", "value": "="} [Sakshi](title)
+    - list [vendors](tablenamenew) whose [name](column) is [equal to]{"entity": "operator", "value": "="} [Priya](title)
+    - show me the [vendors](tablenamenew) whose [name](column) is [equal to]{"entity": "operator", "value": "="} [Abhay](title)
+    - get me [vendors](tablenamenew) whose [name](column) [contains]{"entity": "operator", "value": "like"} [Priya](title)
+    - display [vendors](tablenamnew) whose [name](column) [has]{"entity": "operator", "value": "like"} [Sharma](title)
+    - display [vendors](tablenamenew) whose [name](column) [has]{"entity": "operator", "value": "like"} [Cements](title)
+
 - intent: provide_table
   examples: |
-    -  table name is [employees](table)
-    -  table name is [vendors](table)
-    -  table name is [clients](table)
-    -  table name is [customers](table)
-    -  table name is [patients](table)
+    -  table name to insert is [employees](table)
+    -  table name to insert is [vendors](table)
+    -  table name to insert is  [clients](table)
+    -  table name to insert is  [customers](table)
+    -  table name to insert is [patients](table)
     - add new record 
     - add record
-    -  [vendors](table)
-    -  [clients](table)
-    -  [customers](table)
-    -  [patients](table)
-    -  [employees](table)
-    - table is [employees](table)
-    - table is [clients](table)
-    - table is [customers](table)
-    - table is [patients](table)
-    - table is [vendors](table)
-    - name is [employees](table)
-    - name is [clients](table)
-    - name is [vendors](table)
-    - name is [customers](table)
-    - name is [patients](table)
     - I want to create a new [vendor](table)
     - I want to create a new [clients](table)
     - I want to create a new [customers](table)
@@ -101,7 +122,13 @@ nlu:
     - [New York](location)
     - [Indore](location)
     - [Kerela](location)
-    
+    - [Tokyo](location)
+    - [Punjab](location)
+    - [africa](location)
+    - [Bengluru](location)
+    - [Lucknow](location)
+    - [Jamshedpur](location)
+
 - intent: provide_experience
   examples: |
     - [4](experience)years
@@ -117,8 +144,40 @@ nlu:
     - [15](experience)
     - [35](experience)
 
-        
-
-
-
-    
+- intent: provide_rowname
+  examples: |
+    - [change]{"entity": "update", "value": "Update"} [vendor's]{"entity": "rowname", "value": "vendor"} [name](updatecolumn1) to [Sakshi](updatevalue1) whose [experience](wherecolumn1) is [12](wherevalue1)
+    - [change]{"entity": "update", "value": "Update"} [vendor's]{"entity": "rowname", "value": "vendor"} [location](updatecolumn1) to [mumbai](updatevalue1) whose [age](wherecolumn1) is equal to [50](wherevalue1)
+    - [update]{"entity": "update", "value": "Update"} [vendor's]{"entity": "rowname", "value": "vendor"} [age](updatecolumn1) to [12](updatevalue1) whose [name](wherecolumn1) is equal to [abhay](wherevalue1)
+    - [update](update) [vendor's]{"entity": "rowname", "value": "vendor"} [name](updatecolumn1) to [Naman](updatevalue1) whose [location](wherecolumn1)  is equal to [mumbai](wherevalue1)
+    - [update](update) [vendor's]{"entity": "rowname", "value": "vendor"} [location](updatecolumn1) to [Jaipur](updatevalue1) whose [customer id](wherecolumn1) is equal to [123](wherevalue1)
+    - [update]{"entity": "update", "value": "Update"} [vendor's]{"entity": "rowname", "value": "vendor"} [experience](updatecolumn1) to [43](updatevalue1) whose [name](wherecolumn1) is equal to [sakshi](wherevalue1)
+    - [update]{"entity": "update", "value": "Update"} [vendor's]{"entity": "rowname", "value": "vendor"} [age](updatecolumn1) to [25](updatevalue1) whose [experience](wherecolumn1) is equal to [10](wherevalue1)
+    - [update]{"entity": "update", "value": "Update"} [vendor's]{"entity": "rowname", "value": "vendor"} [location](updatecolumn1) to [Delhi](updatevalue1) whose [age](wherecolumn1) is [65](wherevalue1)
+    - [update](update) [vendor's]{"entity": "rowname", "value": "vendor"} [location](updatecolumn1) to [Dheradun](updatevalue1) whose [age](wherecolumn1) is [27] years(wherevalue1)
+    - change{"entity": "update", "value": "Update"} vendor's{"entity": "rowname", "value": "vendor"} [name](updatecolumn1) to [Abhay](updatevalue1) whose [location](wherecolumn1) is [Noida](wherevalue1)
+    - [update]{"entity": "update", "value": "Update"} [vendor's]{"entity": "rowname", "value": "vendor"} [name](updatecolumn1) to [John](updatevalue1) whose [experience](wherecolumn1) is [5](wherevalue1)
+    - [change]{"entity": "update", "value": "Update"} [vendor's]{"entity": "rowname", "value": "vendor"} [location](updatecolumn1) to [New York](updatevalue1) whose [age](wherecolumn1) is [30](wherevalue1)
+    - [update]{"entity": "update", "value": "Update"} [vendor's]{"entity": "rowname", "value": "vendor"} [age](updatecolumn1) to [40](updatevalue1) whose [name](wherecolumn1) is [Jane](wherevalue1)
+    - [update](update) [vendor's]{"entity": "rowname", "value": "vendor"} [name](updatecolumn1) to [Mike](updatevalue1) whose [location](wherecolumn1)  is equal to [Los Angeles](wherevalue1)
+    - [update](update) [vendor's]{"entity": "rowname", "value": "vendor"} [location](updatecolumn1) to [London](updatevalue1) whose [customer id](wherecolumn1) is equal to [123](wherevalue1)
+    - [update]{"entity": "update", "value": "Update"} [vendor's]{"entity": "rowname", "value": "vendor"} [name](updatecolumn1) to [Sarah](updatevalue1) whose [name](wherecolumn1) is equal to [Emily](wherevalue1)
+    - [update]{"entity": "update", "value": "Update"} [vendor's]{"entity": "rowname", "value": "vendor"} [age](updatecolumn1) to [30](updatevalue1) whose [experience](wherecolumn1) is equal to [10](wherevalue1)
+    - [update]{"entity": "update", "value": "Update"} [vendor's]{"entity": "rowname", "value": "vendor"} [location](updatecolumn1) to [Paris](updatevalue1) whose [age](wherecolumn1) is equal to [40](wherevalue1)
+    - [change]{"entity": "update", "value": "Update"} vendor's{"entity": "rowname", "value": "vendor"} [name](updatecolumn1) to [Alex](updatevalue1) whose [location](wherecolumn1) is [Berlin](wherevalue1)
+    - [update]{"entity": "update", "value": "Update"} [vendor's]{"entity": "rowname", "value": "vendor"} [experience](updatecolumn1) to [15](updatevalue1) whose [name](wherecolumn1) is [Sakshi](wherevalue1)
+    - [change]{"entity": "update", "value": "Update"} [vendor's]{"entity": "rowname", "value": "vendor"} [experience](updatecolumn1) to [15](updatevalue1) whose [name](wherecolumn1) is [Sakshi](wherevalue1)
+    - [update]{"entity": "update", "value": "Update"} [vendor's]{"entity": "rowname", "value": "vendor"} [age](updatecolumn1) to [25](updatevalue1) whose [name](wherecolumn1) is [Abhay](wherevalue1)
+    - [update]{"entity": "update", "value": "Update"} [vendor's]{"entity": "rowname", "value": "vendor"} [location](updatecolumn1) to [Delhi](updatevalue1) whose [age](wherecolumn1) is [65](wherevalue1)
+    - [update](update) [vendor's]{"entity": "rowname", "value": "vendor"} [location](updatecolumn1) to [Dheradun](updatevalue1) whose [age](wherecolumn1) is [27] years(wherevalue1)
+    - change{"entity": "update", "value": "Update"} vendor's{"entity": "rowname", "value": "vendor"} [name](updatecolumn1) to [Abhay](updatevalue1) whose [location](wherecolumn1) is [Noida](wherevalue1)
+    - [update]{"entity": "update", "value": "Update"} [vendor's]{"entity": "rowname", "value": "vendor"} [name](updatecolumn1) to [John](updatevalue1) whose [experience](wherecolumn1) is [5](wherevalue1)
+    - [change]{"entity": "update", "value": "Update"} [vendor's]{"entity": "rowname", "value": "vendor"} [location](updatecolumn1) to [New York](updatevalue1) whose [age](wherecolumn1) is [30](wherevalue1)
+    - [update]{"entity": "update", "value": "Update"} [vendor's]{"entity": "rowname", "value": "vendor"} [age](updatecolumn1) to [40](updatevalue1) whose [name](wherecolumn1) is [Jane](wherevalue1)
+    - [update](update) [vendor's]{"entity": "rowname", "value": "vendor"} [name](updatecolumn1) to [Mike](updatevalue1) whose [location](wherecolumn1) is equal to [Los Angeles](wherevalue1)
+    - [update](update) [vendor's]{"entity": "rowname", "value": "vendor"} [location](updatecolumn1) to [London](updatevalue1) whose [customer id](wherecolumn1) is equal to [123](wherevalue1)
+    - [update]{"entity": "update", "value": "Update"} [vendor's]{"entity": "rowname", "value": "vendor"} [name](updatecolumn1) to [Nitya](updatevalue1) whose [age](wherecolumn1) is equal to [34](wherevalue1) years
+    - [update]{"entity": "update", "value": "Update"} [vendor's]{"entity": "rowname", "value": "vendor"} [age](updatecolumn1) to [30](updatevalue1) whose [experience](wherecolumn1) is equal to [10](wherevalue1)
+    - [update]{"entity": "update", "value": "Update"} [vendor's]{"entity": "rowname", "value": "vendor"} [location](updatecolumn1) to [Paris](updatevalue1) whose [age](wherecolumn1) is equal to [40](wherevalue1)
+    - [change]{"entity": "update", "value": "Update"} vendor's{"entity": "rowname", "value": "vendor"} [name](updatecolumn1) to [Alex](updatevalue1) whose [location](wherecolumn1) is [Seoul](wherevalue1)
+    - [update]{"entity": "update", "value": "Update"} [vendor's]{"entity": "rowname", "value": "vendor"} [experience](updatecolumn1) to [15](updatevalue1) whose [name](wherecolumn1) is [Rahul](wherevalue1)
