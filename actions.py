@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 #from typing import Any, Text, Dict, List
 #from rasa_sdk import Action, Tracker
 #from rasa_sdk.executor import CollectingDispatcher
@@ -67,37 +60,56 @@
          #    sql_query = "default"
 
 #        return []
-#from typing import Any, Text, Dict, List
-#from rasa_sdk import Action, Tracker
-#from rasa_sdk.executor import CollectingDispatcher
 
-#class GenerateSQLQueryAction(Action):
- #   def name(self) -> Text:
-  #      return "generate_sql_query_action"
-
-   # def run(self, dispatcher: CollectingDispatcher,
-    #        tracker: Tracker,
-     #       domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-    
-      #  table = tracker.get_slot("table")
-       # namee = tracker.get_slot("namee")
-        #experience = tracker.get_slot("experience")
-        #location = tracker.get_slot("location")
-    
-        #sql_query = f"SELECT * FROM {table} WHERE location = '{location}' AND experience = {experience} AND name = '{namee}'"
-            
-        #dispatcher.utter_message(template="utter_display_results", query=sql_query)
-
-        #return []
 
 
 
 from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-from rasa_sdk.events import SlotSet
 
+class GenerateSQLQueryAction(Action):
+    def name(self) -> Text:
+        return "generate_sql_query_action"
 
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        entity_value = tracker.get_slot("tablenamenew")
+        intent = tracker.latest_message.get("intent").get("name")
+        tablenamenew = tracker.get_slot("tablenamenew")
+
+        if intent == "provide_table_new":
+            sql_query = f"SELECT * FROM {tablenamenew}"
+            dispatcher.utter_message(template="utter_display_results", query=sql_query)
+        else:
+            sql_query = "default"
+
+        return []
+
+class GenerateWHEREQueryAction(Action):
+    def name(self) -> Text:
+        return "generate_where_query_action"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        intent = tracker.latest_message.get("intent").get("name")
+        tablenamenew = tracker.get_slot("tablenamenew")
+        operator = tracker.get_slot("operator")
+        value = tracker.get_slot("value")
+        column = tracker.get_slot("column")
+        title = tracker.get_slot("title")
+        if intent == "provide_table_where":
+            where_query = f"SELECT * FROM {tablenamenew} WHERE {column} {operator} {value};"
+            dispatcher.utter_message(template="utter_display_where", where=where_query)
+        elif intent == "provide_table_name":
+            word_query = f"SELECT * FROM {tablenamenew} WHERE {column} {operator} {title};"
+            dispatcher.utter_message(template="utter_display_word", word=word_query)
+        else:
+            print("default")
+
+        return []
 
 class CollectInformationAction(Action):
     def name(self) -> Text:
@@ -107,6 +119,7 @@ class CollectInformationAction(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         # Retrieve the slot values
+        print("name")
         namee = tracker.get_slot("namee")
         location = tracker.get_slot("location")
         experience = tracker.get_slot("experience")
@@ -114,7 +127,8 @@ class CollectInformationAction(Action):
 
         # Check if all slots have been filled
         if namee and location and experience and table:
-            response = f"SELECT * FROM {table} WHERE location = '{location}' AND experience = '{experience}' AND name = '{namee}'"
+            response = f"INSERT INTO {table} (name, experience, location) VALUES ('{namee}', '{experience}', '{location}');"
+            dispatcher.utter_message(text="your query is generated")
         elif not table:
             response = "Please provide the name of the table you want to create a record in:"
         elif not namee:
@@ -128,8 +142,31 @@ class CollectInformationAction(Action):
 
         dispatcher.utter_message(text=response)
 
-        
-
         return []
 
+class GenerateUpdateQueryAction(Action):
+    def name(self) -> Text:
+        return "generate_update_query_action"
+
+    def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
+        entity_value = tracker.get_slot("rowname")
+        intent = tracker.latest_message.get("intent").get("name")
+        rowname = tracker.get_slot("rowname")
+        updatecolumn1 = tracker.get_slot("updatecolumn1")
+        update = tracker.get_slot("update")
+        updatevalue1 = tracker.get_slot("updatevalue1")
+        wherecolumn1 = tracker.get_slot("wherecolumn1")
+        wherevalue1 = tracker.get_slot("wherevalue1")
+        if intent == "provide_rowname":
+            update_query = f"{update} {rowname} SET {updatecolumn1} = '{updatevalue1}' WHERE {wherecolumn1} = {wherevalue1};"
+            
+            dispatcher.utter_message(template="utter_display_update", querynew=update_query)
+        else:
+            print("default")
+        return []
 
